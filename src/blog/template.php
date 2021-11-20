@@ -7,6 +7,14 @@ $getCurPage = basename($_SERVER['PHP_SELF']);
 		exit;
 	} 
 	
+	function cleanit($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  $data = str_replace('lt;', '', $data);
+  $data = str_replace('gt;', '', $data);
+  return $data;
+}
 	
 	$url = $_SERVER['REQUEST_URI'];
 
@@ -53,14 +61,7 @@ $objJsonDocument = json_encode($objXmlDocument);
 $arrOutput = json_decode($objJsonDocument, TRUE);
 
 if ($onBlog == '1') {
-	function cleanit($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  $data = str_replace('lt;', '', $data);
-  $data = str_replace('gt;', '', $data);
-  return $data;
-}
+
 
 $addMeta = '
 	
@@ -111,7 +112,7 @@ if ($onBlog == '1') {
 	if (file_exists($filePath.$arrOutput['slug'].'.jpg')) {
 ?>
 			<div class="col-12">
-				<?php if ($onBlog == '0') { ?><a href="<?php echo $website;?>/blog/<?php echo $arrOutput['slug'];?>/"><?php }?><img src="<?php echo $website;?>/blog/<?php echo $arrOutput['slug'];?>/<?php echo $arrOutput['slug'];?>.jpg?<?php echo $arrOutput['changedate'];?>" class="w-100 mx-auto border border-dark" alt="<?php echo $arrOutput['title'];?>"><?php if ($onBlog == '0') { ?></a><?php } ?>
+				<?php if ($onBlog == '0') { ?><a href="<?php echo $website;?>/blog/<?php echo $arrOutput['slug'];?>/"><?php }?><img src="<?php echo $website;?>/blog/<?php echo $arrOutput['slug'];?>/<?php echo $arrOutput['slug'];?>.jpg?<?php echo $arrOutput['changedate'];?>" class="w-100 mx-auto border border-dark" alt="<?php echo cleanit($arrOutput['title']);?>"><?php if ($onBlog == '0') { ?></a><?php } ?>
 			
 			</div>
 
