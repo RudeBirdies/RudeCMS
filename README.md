@@ -1,7 +1,6 @@
-RudeCMS is a content management system (CMS) I built because I couldn't find exactly what I was looking for when building my site https://rudebirdies.com. Check it out to see RudeCMS in action. Completely flat-file, no databases to corrupt or slow you down.
+RudeCMS is a content management system (CMS) I built because I couldn't find exactly what I was looking for when building my site https://rudebirdies.com. Check it out to see RudeCMS in action. Completely flat-file, no databases to corrupt or slow you down. 
 
-Features:
-
+**Features:**
 - No database
 - No installation beyond copying the files
 - Easy configuration
@@ -11,3 +10,6 @@ Features:
 - Slug links for blog posts
   
   
+**Future Updates**
+- Automatic site map generation
+- Anything else I think is cool
