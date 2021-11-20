@@ -1,16 +1,12 @@
-### Hi there 👋
+RudeCMS is a CMS I built because I couldn't find exactly what I was looking for when building my site https://rudebirdies.com. Check it out to see RudeCMS in action.
 
-<!--
-**RudeCMS/RudeCMS** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+Features:
 
-Here are some ideas to get you started:
-
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+- No database
+- No installation beyond copying the files
+- Easy configuration
+- 1 Theme
+- Infinite Scrolling
+- Post Navigation (Previous/Next)
+  
+  
