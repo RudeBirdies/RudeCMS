@@ -26,11 +26,12 @@ if ($onBlog == '1') {
 	$pieces = explode("/", $mypath);
 	$piecesCount = count($pieces);
 	
+
 	$dirName = $pieces[$piecesCount-1];
 	
 libxml_use_internal_errors(TRUE);
 
-if ($onBlog == '1') {
+	if ($onBlog == '1') {
 		$filePath = '';
 	} else {
 		$filePath = "blog/".$dirName."/";
@@ -52,19 +53,28 @@ $objJsonDocument = json_encode($objXmlDocument);
 $arrOutput = json_decode($objJsonDocument, TRUE);
 
 if ($onBlog == '1') {
+	function cleanit($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  $data = str_replace('lt;', '', $data);
+  $data = str_replace('gt;', '', $data);
+  return $data;
+}
+
 $addMeta = '
 	
 	<title>'.$arrOutput['title'].'</title>
 
 	<link rel="canonical" href="'.$website.'/blog/'.$dirName.'"/" />
 	<meta name="twitter:card" content="summary" />
-	<meta name="twitter:site" content="@WarmUpYourEars" />
-	<meta name="twitter:creator" content="@WarmUpYourEars" />
-	<meta name="twitter:title" content="'.$arrOutput['title'].'" />
+	<meta name="twitter:site" content="'.$twitter.'" />
+	<meta name="twitter:creator" content="'.$twitter.'" />
+	<meta name="twitter:title" content="'.cleanit($arrOutput['title']).'" />
 	<meta name="twitter:image" content="'.$website.'/blog/'.$dirName.'/'.$dirName.'.jpg" />
 
 	<meta property="og:url" content="'.$website.'/blog/'.$dirName.'"/" />
-	<meta property="og:title" content="'.$arrOutput['title'].'" />
+	<meta property="og:title" content="'.cleanit($arrOutput['title']).'" />
 	<meta property="og:description" content="'.$arrOutput['metadesc'].'" />
 	<meta property="og:image" content="'.$website.'/blog/'.$dirName.'/'.$dirName.'.jpg" />
 	<meta property="og:type" content="article" />
