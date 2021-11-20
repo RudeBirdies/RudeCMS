@@ -23,14 +23,22 @@ if ($onBlog == '1') {
 }
 
 	$mypath=dirname(__FILE__);
-	$pieces = explode("\\", $mypath);
+	$pieces = explode("/", $mypath);
 	$piecesCount = count($pieces);
 	
 	$dirName = $pieces[$piecesCount-1];
 	
 libxml_use_internal_errors(TRUE);
 
-$objXmlDocument = simplexml_load_file($website."/blog/".$dirName."/".$dirName.".xml");
+if ($onBlog == '1') {
+		$filePath = '';
+	} else {
+		$filePath = "blog/".$dirName."/";
+	}
+
+   
+	    
+$objXmlDocument = simplexml_load_file($filePath.$dirName.".xml");
 
 if ($objXmlDocument === FALSE) {
     echo "There were errors parsing the XML file.\n";
