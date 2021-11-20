@@ -75,7 +75,7 @@ $addMeta = '
 
 	<meta property="og:url" content="'.$website.'/blog/'.$dirName.'"/" />
 	<meta property="og:title" content="'.cleanit($arrOutput['title']).'" />
-	<meta property="og:description" content="'.$arrOutput['metadesc'].'" />
+	<meta property="og:description" content="'.cleanit($arrOutput['metadesc']).'" />
 	<meta property="og:image" content="'.$website.'/blog/'.$dirName.'/'.$dirName.'.jpg" />
 	<meta property="og:type" content="article" />
 	<meta property="og:updated_time" content="'.$arrOutput['date'].'" />
