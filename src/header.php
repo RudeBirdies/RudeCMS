@@ -128,7 +128,7 @@ a:active {
 <div class="container-sm">
 	<div class="row p-2">
 		<div class="col-12 text-center">
-			<a href="<?php echo $website;?>"><img src="<?php echo $website;?>/logo.png" class="d-block mx-auto rounded-circle border border-dark m-2"></a>
+			<a href="<?php echo $website;?>"><img src="<?php echo $website;?>/logo.png" class="d-block mx-auto rounded-circle border border-dark m-2" alt="<?php echo $blogName;?>"></a>
 			<h1><?php echo $blogName;?></h1>
 			<h2 class="h6"><?php echo $blogSubtitle;?></h2>
 			<?php include 'socials.php';?>
