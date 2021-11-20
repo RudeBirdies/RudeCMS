@@ -1,0 +1,11 @@
+RewriteEngine on 
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php [NC,L]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.xml -f
+RewriteRule ^(.*)$ $1.xml [NC,L]
+
+ErrorDocument 404 /404.php
