@@ -6,7 +6,7 @@ $getCurPage = basename($_SERVER['PHP_SELF']);
 		header('Location: ../');
 		exit;
 	} 
-
+	
 if(!function_exists("cleanit")) {
 	function cleanit($data) {
 	  $data = trim($data);
@@ -41,15 +41,12 @@ if ($onBlog == '1') {
 	
 libxml_use_internal_errors(TRUE);
 
-	if ($onBlog == '1') {
-		$filePath = '';
-	} else {
-		$filePath = "blog/".$dirName."/";
-	}
+$context  = stream_context_create(array('http' => array('header' => 'Accept: application/xml')));
+$url = $website."/blog/".$dirName."/".$dirName.".xml";
 
-   
-	    
-$objXmlDocument = simplexml_load_file($filePath.$dirName.".xml");
+$xml = file_get_contents($url, false, $context);
+$objXmlDocument = simplexml_load_string($xml);
+
 
 if ($objXmlDocument === FALSE) {
     echo "There were errors parsing the XML file.\n";
