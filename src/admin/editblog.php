@@ -55,8 +55,6 @@ if (empty($metadesc)) {
 	$metadesc = 'None Supplied';
 }
 
-//print_r($_POST);
-
 	
 	if (!empty(basename($_FILES["FileName"]["name"]))) {
 
@@ -142,7 +140,11 @@ if (isset($_GET['success'])) {
 
 	libxml_use_internal_errors(TRUE);
 
-	$objXmlDocument = simplexml_load_file($website."/blog/".$dirName."/".$dirName.".xml");
+	$context  = stream_context_create(array('http' => array('header' => 'Accept: application/xml')));
+	$url = $website."/blog/".$dirName."/".$dirName.".xml";
+
+	$xml = file_get_contents($url, false, $context);
+	$objXmlDocument = simplexml_load_string($xml);
 
 	if ($objXmlDocument === FALSE) {
 		echo "There were errors parsing the XML file.\n";
