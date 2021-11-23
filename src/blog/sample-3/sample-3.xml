@@ -1,0 +1,11 @@
+<blog>
+		<date>2021-11-23</date>
+		<by>Your Name Here</by>
+		<title>Sample 3</title>
+		<slug>sample-3</slug>
+		<body>This is the most recent sample uploaded to the blog.</body>
+		<metadesc>This is the most recent sample uploaded to the blog.</metadesc>
+		<tag>Eat, Sleep, Code, Repeat</tag>
+		<changedate>1637380096</changedate>
+	</blog>
+	

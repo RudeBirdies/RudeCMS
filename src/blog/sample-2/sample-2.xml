@@ -1,0 +1,10 @@
+<blog>
+		<date>2021-11-20</date>
+		<by>Your Name Here</by>
+		<title>Sample 2</title>
+		<slug>sample-2</slug>
+		<body>This is the second sample uploaded to the blog.</body>
+		<metadesc>This is the second sample uploaded to the blog.</metadesc>
+		<tag>Dogs, Cats, Living Together</tag>
+		<changedate>Bender, Fry, Leela</changedate>
+	</blog>
