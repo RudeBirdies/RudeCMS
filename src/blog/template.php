@@ -35,8 +35,10 @@ if ($onBlog == '1') {
 	$mypath=dirname(__FILE__);
 	$pieces = explode("/", $mypath);
 	$piecesCount = count($pieces);
-	
 
+	$dirName = $pieces[$piecesCount-1];
+	$pieces = explode("\\", $dirName); //Adding in split on backslash as this changes depending on host
+	$piecesCount = count($pieces);
 	$dirName = $pieces[$piecesCount-1];
 	
 libxml_use_internal_errors(TRUE);
@@ -127,7 +129,7 @@ if ($onBlog == '1') {
 	<?php } ?>
 
 
-			<div class="col-12 mt-2"><?php if (!empty($arrOutput['body'])) { echo $arrOutput['body'];} ;?></div>
+			<div class="col-12 mt-2"><?php if (!empty($arrOutput['body'])) { echo nl2br($arrOutput['body']);} ;?></div>
 	<?php if ($onBlog == '1') { 
 
 	if (!empty($arrOutput['tag'])) { 
@@ -137,6 +139,7 @@ if ($onBlog == '1') {
 	}
 
 	$pieces = explode(",", $tags);
+	
 	$numTags = count($pieces);
 	$i = 0;
 
