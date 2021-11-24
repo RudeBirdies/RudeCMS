@@ -1,6 +1,26 @@
 <?php
-$url = $_SERVER['REQUEST_URI'];
+$getCurPage = basename($_SERVER['PHP_SELF']);
+	
+	if ($getCurPage == 'template.php') {
+		//Don't open this by itself. Bye bye.
+		header('Location: ../');
+		exit;
+	} 
+	
+if(!function_exists("cleanit")) {
+	function cleanit($data) {
+	  $data = trim($data);
+	  $data = stripslashes($data);
+	  $data = htmlspecialchars($data);
+	  $data = str_replace('lt;', '', $data);
+	  $data = str_replace('gt;', '', $data);
+	  return $data;
+	}
+}
+	
+	$url = $_SERVER['REQUEST_URI'];
 
+	
 if (strpos($url,'blog') !== false) {
     $onBlog = '1';
 } else {
@@ -13,9 +33,12 @@ if ($onBlog == '1') {
 }
 
 	$mypath=dirname(__FILE__);
-	$pieces = explode("\\", $mypath);
+	$pieces = explode("/", $mypath);
 	$piecesCount = count($pieces);
-	
+
+	$dirName = $pieces[$piecesCount-1];
+	$pieces = explode("\\", $dirName); //Adding in split on backslash as this changes depending on host
+	$piecesCount = count($pieces);
 	$dirName = $pieces[$piecesCount-1];
 	
 libxml_use_internal_errors(TRUE);
@@ -25,6 +48,7 @@ $url = $website."/blog/".$dirName."/".$dirName.".xml";
 
 $xml = file_get_contents($url, false, $context);
 $objXmlDocument = simplexml_load_string($xml);
+
 
 if ($objXmlDocument === FALSE) {
     echo "There were errors parsing the XML file.\n";
@@ -38,25 +62,27 @@ $objJsonDocument = json_encode($objXmlDocument);
 $arrOutput = json_decode($objJsonDocument, TRUE);
 
 if ($onBlog == '1') {
+
+
 $addMeta = '
+	
+	<title>'.$arrOutput['title'].'</title>
 
 	<link rel="canonical" href="'.$website.'/blog/'.$dirName.'"/" />
 	<meta name="twitter:card" content="summary" />
-	<meta name="twitter:site" content="@WarmUpYourEars" />
-	<meta name="twitter:creator" content="@WarmUpYourEars" />
-	<meta name="twitter:title" content="'.$arrOutput['title'].'" />
+	<meta name="twitter:site" content="'.$twitter.'" />
+	<meta name="twitter:creator" content="'.$twitter.'" />
+	<meta name="twitter:title" content="'.cleanit($arrOutput['title']).'" />
 	<meta name="twitter:image" content="'.$website.'/blog/'.$dirName.'/'.$dirName.'.jpg" />
 
 	<meta property="og:url" content="'.$website.'/blog/'.$dirName.'"/" />
-	<meta property="og:title" content="'.$arrOutput['title'].'" />
-	<meta property="og:description" content="'.$arrOutput['metadesc'].'" />
+	<meta property="og:title" content="'.cleanit($arrOutput['title']).'" />
+	<meta property="og:description" content="'.cleanit($arrOutput['metadesc']).'" />
 	<meta property="og:image" content="'.$website.'/blog/'.$dirName.'/'.$dirName.'.jpg" />
 	<meta property="og:type" content="article" />
 	<meta property="og:updated_time" content="'.$arrOutput['date'].'" />
 	<meta property="article:author" content="'.$arrOutput['by'].'" />
 	<meta property="article:publisher" content="'.$website.'" />
-
-
 
 ';
 }
@@ -77,6 +103,7 @@ if ($onBlog == '1') {
 			</div>
 <?php
 
+
 	if ($onBlog == '1') {
 		$filePath = '';
 	} else {
@@ -86,7 +113,7 @@ if ($onBlog == '1') {
 	if (file_exists($filePath.$arrOutput['slug'].'.jpg')) {
 ?>
 			<div class="col-12">
-				<?php if ($onBlog == '0') { ?><a href="<?php echo $website;?>/blog/<?php echo $arrOutput['slug'];?>/"><?php }?><img src="<?php echo $website;?>/blog/<?php echo $arrOutput['slug'];?>/<?php echo $arrOutput['slug'];?>.jpg?<?php echo $arrOutput['changedate'];?>" class="w-100 mx-auto border border-dark" alt="<?php echo $arrOutput['title'];?>"><?php if ($onBlog == '0') { ?></a><?php } ?>
+				<?php if ($onBlog == '0') { ?><a href="<?php echo $website;?>/blog/<?php echo $arrOutput['slug'];?>/"><?php }?><img src="<?php echo $website;?>/blog/<?php echo $arrOutput['slug'];?>/<?php echo $arrOutput['slug'];?>.jpg?<?php echo $arrOutput['changedate'];?>" class="w-100 mx-auto border border-dark" alt="<?php echo cleanit($arrOutput['title']);?>"><?php if ($onBlog == '0') { ?></a><?php } ?>
 			
 			</div>
 
@@ -102,7 +129,7 @@ if ($onBlog == '1') {
 	<?php } ?>
 
 
-			<div class="col-12 mt-2"><?php if (!empty($arrOutput['body'])) { echo $arrOutput['body'];} ;?></div>
+			<div class="col-12 mt-2"><?php if (!empty($arrOutput['body'])) { echo nl2br($arrOutput['body']);} ;?></div>
 	<?php if ($onBlog == '1') { 
 
 	if (!empty($arrOutput['tag'])) { 
@@ -112,6 +139,7 @@ if ($onBlog == '1') {
 	}
 
 	$pieces = explode(",", $tags);
+	
 	$numTags = count($pieces);
 	$i = 0;
 
