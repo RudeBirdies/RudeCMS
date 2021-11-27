@@ -8,6 +8,8 @@
 		exit;
 	}
 	*/
+
+$now = time();
 	
 function cleanit($data) {
   $data = trim($data);
@@ -20,7 +22,6 @@ function cleanit($data) {
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	$now = time();
 	$filename = $_FILES['FileName'];
 	$date = $_POST['Date'];
 	$by = $_POST['By'];
@@ -78,7 +79,7 @@ if (!file_exists('../blog/'.$slug)) {
 		<body>'.cleanit($body).'</body>
 		<metadesc>'.cleanit($metadesc).'</metadesc>
 		<tag>'.$tag.'</tag>
-		<changedate>'.time().'</changedate>
+		<changedate>'.$now.'</changedate>
 	</blog>
 	';
 	fwrite($myfile, $txt);
@@ -91,6 +92,7 @@ if (!file_exists('../blog/'.$slug)) {
 	
 	$file = '../bloglist.php';
 	$newPost = '$blogPost['.$numPosts.'] = "'.$slug.'";
+$blogPostTime['.$numPosts.'] = "'.$now.'";
 '; //force another line because I can't remember right now
 	
 	file_put_contents($file, $newPost, FILE_APPEND | LOCK_EX);
