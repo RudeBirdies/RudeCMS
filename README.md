@@ -2,6 +2,9 @@ RudeCMS is a super-simple content management system (CMS). I wanted a simple, fl
 
 Completely flat-file, no databases to corrupt or slow you down. Let me know if you use it and I'll link to your site!
 
+**Current Release:**
+- [Click Here](https://github.com/RudeCMS/RudeCMS/releases/)
+
 **Features:**
 - No database
 - No installation beyond copying the files
