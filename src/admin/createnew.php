@@ -103,15 +103,31 @@ if (!file_exists('../blog/'.$slug)) {
 ?>
 
 <form action="createnew.php" method="POST"  enctype="multipart/form-data">
+<script>
+function previewImg(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
 
+            reader.onload = function (e) {
+                $('#imgPrv')
+                    .attr('src', e.target.result)
+                    .width(500)
+					.addClass( "d-block mx-auto mb-2" );
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+
+<img id="imgPrv" src="#" alt="Image Preview" class="d-none"/>
 
 	<div class="form-group row">
 		<div class="custom-file col-12 col-sm-4 offset-sm-4">
-		  <input type="file" class="custom-file-input" id="FileName" name="FileName">
+		  <input type="file" class="custom-file-input" id="FileName" name="FileName" onchange="previewImg(this);">
 		  <label class="custom-file-label" for="FileName">Choose file</label>
 		</div>
 		<div class="custom-file col-12 col-sm-4 offset-sm-4">
-		<span>Image will only update if new image is selected</span>
 		</div>
 	</div>
 
