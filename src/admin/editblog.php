@@ -9,6 +9,7 @@
 	
 	$updateSuccess = 0;
 	$dirName = $_GET['editslug'];
+	$now = time();
 
 function cleanit($data) {
   $data = trim($data);
@@ -21,7 +22,6 @@ function cleanit($data) {
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	$now = time();
 	$filename = $_FILES['FileName'];
 	$date = $_POST['Date'];
 	$by = $_POST['By'];
@@ -55,6 +55,8 @@ if (empty($metadesc)) {
 	$metadesc = 'None Supplied';
 }
 
+//print_r($_POST);
+
 	
 	if (!empty(basename($_FILES["FileName"]["name"]))) {
 
@@ -78,8 +80,6 @@ if ($slug !== $dirName) {
 	$str=str_replace($dirName, $slug,$str);
 	file_put_contents('../bloglist.php', $str);
 
-	
-	
 	$dirName = $slug;
 	
 }
@@ -107,6 +107,25 @@ if (!file_exists('../blog/'.$slug)) {
 	fclose($myfile);
 
 	$updateSuccess = 1;
+	
+	
+		sleep(3); //Give the file time to update
+	
+	include '../bloglist.php';
+
+	$keyToUpdate = array_search($slug, $blogPost);	
+	$stringToUpdate = '$blogPostTime['.$keyToUpdate.'] = "'.$blogPostTime[$keyToUpdate].'"';
+	$replaceWith = '$blogPostTime['.$keyToUpdate.'] = "'.$now.'"';
+	
+	$oldMessage = $stringToUpdate;
+	$deletedFormat = $replaceWith;
+
+	$str=file_get_contents('../bloglist.php');
+	$str=str_replace($oldMessage, $deletedFormat,$str);
+	file_put_contents('../bloglist.php', $str, LOCK_EX);
+	
+
+
 
 }
 
