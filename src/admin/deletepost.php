@@ -45,6 +45,18 @@ rmdir('../blog/'.$dirName);
 	
 	sleep(3); //Give the file time to update
 
+	$stringToRemove = '$blogPostTime['.$keyToRemove.']';
+	$replaceWith = '//'.$stringToRemove;
+	
+	$oldMessage = $stringToRemove;
+	$deletedFormat = $replaceWith;
+
+	$str=file_get_contents('../bloglist.php');
+	$str=str_replace($oldMessage, $deletedFormat,$str);
+	file_put_contents('../bloglist.php', $str, LOCK_EX);
+	
+	sleep(3); //Give the file time to update
+	
 header('Location: '.$website.'/'.$adminarea.'/?deleted');
 		exit;
 
