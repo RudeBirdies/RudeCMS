@@ -17,6 +17,13 @@
 		$postSort[$i] = $value;
 		$i++;
 	}
+
+	$i = 0; 
+	/* rebuild array ids */
+	foreach ($blogPostTime as $value) {
+		$postSortTime[$i] = $value;
+		$i++;
+	}
 	
 	$numPosts = count($postSort);
 	
@@ -29,6 +36,7 @@
 	while ($i < $numPosts) {
 		
 		$newPost = $newPost . '$blogPost['.$i.'] = "'.$postSort[$i].'";
+$blogPostTime['.$i.'] = "'.$postSortTime[$i].'";
 ';
 
 		$i++;
@@ -62,7 +70,7 @@ $i = 0;
 
 while ($i < $numPosts) {
 		
-		echo '<li><a href="editblog.php?editslug='.$reverseOrder[$i].'">'.$reverseOrder[$i].'</a> <a href="deletepost.php?deleteslug='.$reverseOrder[$i].'"  onclick="return confirm(\'Are you sure you want to delete this post?\')">[Delete]</a><br/>';
+	echo '<li><a href="editblog.php?editslug='.$reverseOrder[$i].'">'.$reverseOrder[$i].'</a> <a href="deletepost.php?deleteslug='.$reverseOrder[$i].'"  onclick="return confirm(\'Are you sure you want to delete this post?\')">[Delete]</a><br/>';
 
 $i++;
 
