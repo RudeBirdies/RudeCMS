@@ -62,7 +62,7 @@ $i = 0;
 
 while ($i < $numPosts) {
 		
-	echo '<li><a href="editblog.php?editslug='.$reverseOrder[$i].'">'.$reverseOrder[$i].'</a> <a href="deletepost.php?deleteslug='.$reverseOrder[$i].'">[Delete]</a><br/>';
+		echo '<li><a href="editblog.php?editslug='.$reverseOrder[$i].'">'.$reverseOrder[$i].'</a> <a href="deletepost.php?deleteslug='.$reverseOrder[$i].'"  onclick="return confirm(\'Are you sure you want to delete this post?\')">[Delete]</a><br/>';
 
 $i++;
 
