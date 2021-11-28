@@ -17,5 +17,15 @@ Completely flat-file, no databases to corrupt or slow you down. Let me know if y
   
 **Future Updates**
 - A better admin interface
+- A more secure admin area (log in etc)
 - Automatic resizing/converting jpegs to webp
 - Anything else I think is cool
+
+**Installation**
+- Unzip the release into a folder onto your server and you're good to go. 
+- Rename the "Admin" folder and add some .htaccess / .htpasswd security on the folder because there's no security built into it yet.
+
+**Customization**
+- Update the settings.php file with your site details, social links, preferred colours etc.
+- Swap out the logo file
+- Swap out the favicon.ico
