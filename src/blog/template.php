@@ -101,7 +101,7 @@ if ($onBlog == '1') {
 		<div class="col-12 col-sm-6 offset-sm-3 blogBox p-3">
 	
 			<div class="col-12 text-center">
-				<h1><?php if ($onBlog == '0') { ?><a href="<?php echo $website;?>/blog/<?php echo $arrOutput['slug'];?>/"><?php }?><?php echo urldecode($arrOutput['title']);?><?php if ($onBlog == '0') { ?></a><?php } ?></h1>
+				<h3 class="h1"><?php if ($onBlog == '0') { ?><a href="<?php echo $website;?>/blog/<?php echo $arrOutput['slug'];?>/"><?php }?><?php echo urldecode($arrOutput['title']);?><?php if ($onBlog == '0') { ?></a><?php } ?></h3>
 			</div>
 <?php
 
