@@ -59,6 +59,13 @@ h2{
 	color: <?php echo $subheadingColor;?>;
 }
 
+h3 {
+	font-family: 'M+PLUS+2', sans-serif;	
+	font-weight: 600;
+	color: <?php echo $headingColor;?>;	
+}
+
+	
 span {
 display: inline-block;
 font-size: 0.8em;
