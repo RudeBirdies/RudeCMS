@@ -18,7 +18,7 @@ Completely flat-file, no databases to corrupt or slow you down. Let me know if y
 **Future Updates**
 - A better admin interface
 - A more secure admin area (log in etc)
-- Automatic resizing/converting jpegs to webp
+- Automatic resizing/converting jpegs to webp (ready, will deploy in v0.1.2)
 - Anything else I think is cool
 
 **Installation**
