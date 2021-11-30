@@ -11,6 +11,14 @@
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+2:wght@400;600&display=swap" rel="stylesheet">
 
 <?php
+if (isset($pageName)) {
+	if ($pageName == 'homepage') {
+	echo '<link rel="canonical" href="'.$website.'/" />';
+	echo '<meta name="description" content="'.cleanit($blogSubtitle).'">';
+
+	}
+}
+	
 $url = $_SERVER['REQUEST_URI'];
 if (strpos($url,'blog') !== false) {
     $onBlog = '1';
