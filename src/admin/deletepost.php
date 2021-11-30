@@ -9,15 +9,16 @@
 	
 	$dirName = $_GET['deleteslug'];
 
-function cleanit($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  $data = str_replace('lt;', '', $data);
-  $data = str_replace('gt;', '', $data);
-  return $data;
+if(!function_exists("cleanit")) {
+	function cleanit($data) {
+	  $data = trim($data);
+	  $data = stripslashes($data);
+	  $data = htmlspecialchars($data);
+	  $data = str_replace('lt;', '', $data);
+	  $data = str_replace('gt;', '', $data);
+	  return $data;
+	}
 }
-
 
 $files = glob('../blog/'.$dirName.'/*'); // get all file names
 	foreach($files as $file){ // iterate files
