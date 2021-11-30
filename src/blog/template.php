@@ -115,8 +115,10 @@ if ($onBlog == '1') {
 	if (file_exists($filePath.$arrOutput['slug'].'.jpg')) {
 ?>
 			<div class="col-12">
-				<?php if ($onBlog == '0') { ?><a href="<?php echo $website;?>/blog/<?php echo $arrOutput['slug'];?>/"><?php }?><img src="<?php echo $website;?>/blog/<?php echo $arrOutput['slug'];?>/<?php echo $arrOutput['slug'];?>.jpg?<?php echo $arrOutput['changedate'];?>" class="w-100 mx-auto border border-dark" alt="<?php echo cleanit($arrOutput['title']);?>"><?php if ($onBlog == '0') { ?></a><?php } ?>
-			
+				<?php if ($onBlog == '0') { ?><a href="<?php echo $website;?>/blog/<?php echo $arrOutput['slug'];?>/"><?php }?><picture>
+				<source srcset="<?php echo $website;?>/blog/<?php echo $arrOutput['slug'];?>/<?php echo $arrOutput['slug'];?>.webp?<?php echo $arrOutput['changedate']; ?>" type="image/webp">
+				<img class="w-100 mx-auto border border-dark" src="<?php echo $website;?>/blog/<?php echo $arrOutput['slug'];?>/<?php echo $arrOutput['slug'];?>.jpg?<?php echo $arrOutput['changedate'];?>" alt="<?php echo $arrOutput['title'];?>">
+				</picture><?php if ($onBlog == '0') { ?></a><?php } ?>
 			</div>
 
 	<?php 
