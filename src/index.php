@@ -1,4 +1,5 @@
 <?php
+	$pageName = 'homepage';
 	require_once 'settings.php';
 	require_once 'header.php';
 	require_once 'blogroll.php';
