@@ -68,6 +68,16 @@ if (!file_exists('../blog/'.$slug)) {
 
 		move_uploaded_file($_FILES["FileName"]["tmp_name"], $target_file);
 
+		$file=$target_file;
+		$image=  imagecreatefromjpeg($file);
+		ob_start();
+		imagejpeg($image,NULL,100);
+		$cont=  ob_get_contents();
+		ob_end_clean();
+		imagedestroy($image);
+		$content =  imagecreatefromstring($cont);
+		imagewebp($content,$target_dir .'/'. $dirName . '.webp', 80);
+		imagedestroy($content);
 	}
 	
 	$txt = '';
