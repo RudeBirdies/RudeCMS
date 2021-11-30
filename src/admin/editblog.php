@@ -69,6 +69,18 @@ if (empty($metadesc)) {
 
 		move_uploaded_file($_FILES["FileName"]["tmp_name"], $target_file);
 
+
+		$file=$target_file;
+		$image=  imagecreatefromjpeg($file);
+		ob_start();
+		imagejpeg($image,NULL,100);
+		$cont=  ob_get_contents();
+		ob_end_clean();
+		imagedestroy($image);
+		$content =  imagecreatefromstring($cont);
+		imagewebp($content,$target_dir .'/'. $dirName . '.webp', 80);
+		imagedestroy($content);
+
 	}
 	
 if ($slug !== $dirName) {
@@ -193,7 +205,10 @@ if (isset($_GET['success'])) {
 	if (file_exists('../blog/' . $arrOutput['slug'].'/'.$arrOutput['slug'].'.jpg')) {
 ?>
 		<div class="col-12 col-sm-6 offset-sm-3">
-			<img src="<?php echo $website;?>/blog/<?php echo $arrOutput['slug'];?>/<?php echo $arrOutput['slug'];?>.jpg?<?php echo rand(1,10000000); //helps prevent caching of image }?>" class="w-100 mx-auto border border-dark" alt="<?php echo $arrOutput['title'];?>">
+			<picture>
+			<source srcset="<?php echo $website;?>/blog/<?php echo $arrOutput['slug'];?>/<?php echo $arrOutput['slug'];?>.webp?<?php echo rand(1,10000000); //helps prevent caching of image }?>" type="image/webp">
+			<img class="w-100 mx-auto border border-dark" src="<?php echo $website;?>/blog/<?php echo $arrOutput['slug'];?>/<?php echo $arrOutput['slug'];?>.jpg?<?php echo rand(1,10000000); //helps prevent caching of image }?>" alt="<?php echo $arrOutput['title'];?>">
+			</picture>
 		</div>
 		<?php
 		}
