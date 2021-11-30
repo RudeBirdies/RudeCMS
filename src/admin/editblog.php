@@ -11,13 +11,15 @@
 	$dirName = $_GET['editslug'];
 	$now = time();
 
-function cleanit($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  $data = str_replace('lt;', '', $data);
-  $data = str_replace('gt;', '', $data);
-  return $data;
+if(!function_exists("cleanit")) {
+	function cleanit($data) {
+	  $data = trim($data);
+	  $data = stripslashes($data);
+	  $data = htmlspecialchars($data);
+	  $data = str_replace('lt;', '', $data);
+	  $data = str_replace('gt;', '', $data);
+	  return $data;
+	}
 }
 
 
