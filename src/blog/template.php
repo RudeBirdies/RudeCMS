@@ -83,6 +83,8 @@ $addMeta = '
 	<meta property="og:updated_time" content="'.$arrOutput['date'].'" />
 	<meta property="article:author" content="'.$arrOutput['by'].'" />
 	<meta property="article:publisher" content="'.$website.'" />
+	
+	<meta name="description" content="'.cleanit($arrOutput['metadesc']).'">
 
 ';
 }
