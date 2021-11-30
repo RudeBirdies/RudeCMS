@@ -68,7 +68,7 @@ $addMeta = '
 	
 	<title>'.$arrOutput['title'].'</title>
 
-	<link rel="canonical" href="'.$website.'/blog/'.$dirName.'"/" />
+	<link rel="canonical" href="'.$website.'/blog/'.$dirName.'/" />
 	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:site" content="'.$twitter.'" />
 	<meta name="twitter:creator" content="'.$twitter.'" />
