@@ -36,8 +36,8 @@ if ($getCurPage == '404.php') {
 if (isset($addMeta)) {
 	echo $addMeta;
 } else {
-?><title><?php echo $blogName;?></title>
-
+?><title><?php echo $blogName . ' | ' . $blogSubtitle;?></title>
+	
 <?php
 }
 ?>
