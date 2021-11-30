@@ -11,6 +11,17 @@
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+2:wght@400;600&display=swap" rel="stylesheet">
 
 <?php
+if(!function_exists("cleanit")) {
+	function cleanit($data) {
+	  $data = trim($data);
+	  $data = stripslashes($data);
+	  $data = htmlspecialchars($data);
+	  $data = str_replace('lt;', '', $data);
+	  $data = str_replace('gt;', '', $data);
+	  return $data;
+	}
+}
+	
 if (isset($pageName)) {
 	if ($pageName == 'homepage') {
 	echo '<link rel="canonical" href="'.$website.'/" />';
