@@ -26,7 +26,7 @@ while ($i < $numPosts) {
 		
 		
 $var = $var . '<url>
-	<loc>'.$website.'/blog/' . $reverseOrder[$i] . '</loc>
+	<loc>'.$website.'/blog/' . $reverseOrder[$i] . '/</loc>
 	<lastmod>' . date("Y-m-d",$reverseOrderTime[$i]). '</lastmod>
 	</url>
 ';
