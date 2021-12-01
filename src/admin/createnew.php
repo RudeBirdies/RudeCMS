@@ -76,7 +76,7 @@ if (!file_exists('../blog/'.$slug)) {
 		ob_end_clean();
 		imagedestroy($image);
 		$content =  imagecreatefromstring($cont);
-		imagewebp($content,$target_dir .'/'. $dirName . '.webp', 80);
+		imagewebp($content,$target_dir .'/'. $slug . '.webp', 80);
 		imagedestroy($content);
 	}
 	
