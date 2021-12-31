@@ -75,7 +75,7 @@ $addMeta = '
 	<meta name="twitter:title" content="'.cleanit($arrOutput['title']).'" />
 	<meta name="twitter:image" content="'.$website.'/blog/'.$dirName.'/'.$dirName.'.jpg" />
 
-	<meta property="og:url" content="'.$website.'/blog/'.$dirName.'"/" />
+	<meta property="og:url" content="'.$website.'/blog/'.$dirName.'/" />
 	<meta property="og:title" content="'.cleanit($arrOutput['title']).'" />
 	<meta property="og:description" content="'.cleanit($arrOutput['metadesc']).'" />
 	<meta property="og:image" content="'.$website.'/blog/'.$dirName.'/'.$dirName.'.jpg" />
@@ -84,7 +84,8 @@ $addMeta = '
 	<meta property="article:author" content="'.$arrOutput['by'].'" />
 	<meta property="article:publisher" content="'.$website.'" />
 	
-	<meta name="description" content="'.cleanit($arrOutput['metadesc']).'">
+	 <meta name="description" content="'.cleanit($arrOutput['metadesc']).'">
+
 
 ';
 }
@@ -115,8 +116,10 @@ if ($onBlog == '1') {
 	if (file_exists($filePath.$arrOutput['slug'].'.jpg')) {
 ?>
 			<div class="col-12">
-				<?php if ($onBlog == '0') { ?><a href="<?php echo $website;?>/blog/<?php echo $arrOutput['slug'];?>/"><?php }?><img src="<?php echo $website;?>/blog/<?php echo $arrOutput['slug'];?>/<?php echo $arrOutput['slug'];?>.jpg?<?php echo $arrOutput['changedate'];?>" class="w-100 mx-auto border border-dark" alt="<?php echo cleanit($arrOutput['title']);?>"><?php if ($onBlog == '0') { ?></a><?php } ?>
-			
+			<picture>
+			<?php if ($onBlog == '0') { ?><a href="<?php echo $website;?>/blog/<?php echo $arrOutput['slug'];?>/"><?php }?><source srcset="<?php echo $website;?>/blog/<?php echo $arrOutput['slug'];?>/<?php echo $arrOutput['slug'];?>.webp?<?php echo $arrOutput['changedate']; ?>" type="image/webp">
+			<img class="w-100 mx-auto border border-dark" src="<?php echo $website;?>/blog/<?php echo $arrOutput['slug'];?>/<?php echo $arrOutput['slug'];?>.jpg?<?php echo $arrOutput['changedate'];?>" alt="<?php echo cleanit($arrOutput['title']);?>"><?php if ($onBlog == '0') { ?></a><?php } ?>
+			</picture>			
 			</div>
 
 	<?php 
