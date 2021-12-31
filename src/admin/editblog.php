@@ -244,6 +244,19 @@ if (isset($_GET['success'])) {
   </div>  
   
   	<script>
+	
+	const blogTitles = [<?php
+
+	$i = 0; 
+	/* rebuild array ids */
+	foreach ($blogPost as $value) {
+		echo '"'.$value,'",';
+		$i++;
+	}
+
+
+?>];
+
 		var slug = function(str) {
 		  str = str.replace(/^\s+|\s+$/g, ''); // trim
 		  str = str.toLowerCase();
@@ -259,6 +272,12 @@ if (isset($_GET['success'])) {
 				   .replace(/\s+/g, '-') // collapse whitespace and replace by -
 				   .replace(/-+/g, '-'); // collapse dashes
 
+			if ( blogTitles.includes(str) ) {
+				$("#Slug").addClass("bg-danger");
+			} else {
+				$("#Slug").removeClass("bg-danger");
+			};
+			
 		  return str;
 		};
 
