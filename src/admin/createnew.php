@@ -114,7 +114,10 @@ $blogPostTime['.$numPosts.'] = "'.$now.'";
 
 }
 
+
+include '../bloglist.php';
 ?>
+
 
 <form action="createnew.php" method="POST"  enctype="multipart/form-data">
 <script>
@@ -176,6 +179,19 @@ function previewImg(input) {
   </div>  
   
   	<script>
+	
+	const blogTitles = [<?php
+
+	$i = 0; 
+	/* rebuild array ids */
+	foreach ($blogPost as $value) {
+		echo '"'.$value,'",';
+		$i++;
+	}
+
+
+?>];
+
 		var slug = function(str) {
 		  str = str.replace(/^\s+|\s+$/g, ''); // trim
 		  str = str.toLowerCase();
@@ -191,7 +207,18 @@ function previewImg(input) {
 				   .replace(/\s+/g, '-') // collapse whitespace and replace by -
 				   .replace(/-+/g, '-'); // collapse dashes
 
+			if ( blogTitles.includes(str) ) {
+				$("#Slug").addClass("bg-danger");
+			} else {
+				$("#Slug").removeClass("bg-danger");
+			};
+			
 		  return str;
+		  
+		  
+		  
+		  
+		  
 		};
 
 
@@ -200,7 +227,6 @@ function previewImg(input) {
 			//slug($('#Slug').val())
 			
 			$('#Slug').val(slug($('#Title').val()));
-
 			
 		 });
 		});
