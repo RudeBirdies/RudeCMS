@@ -134,7 +134,7 @@ if ($onBlog == '1') {
 	<?php } ?>
 
 
-			<div class="col-12 mt-2"><?php if (!empty($arrOutput['body'])) { echo nl2br($arrOutput['body']);} ;?></div>
+			<div class="col-12 mt-2"><?php if (!empty($arrOutput['body'])) { echo nl2br(processString($arrOutput['body']));	} ;?></div>
 	<?php if ($onBlog == '1') { 
 
 	if (!empty($arrOutput['tag'])) { 
