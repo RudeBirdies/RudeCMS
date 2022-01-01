@@ -22,6 +22,12 @@ if(!function_exists("cleanit")) {
 	}
 }
 	
+if(!function_exists("processString")) {			
+			function processString($s) {
+				return preg_replace('/https?:\/\/[\w\-\.!~#?&=+\*\'"(),\/]+/','<a href="$0" target="_blank">$0</a>',$s);
+			}
+}
+	
 if (isset($pageName)) {
 	if ($pageName == 'homepage') {
 	echo '<link rel="canonical" href="'.$website.'/" />';
