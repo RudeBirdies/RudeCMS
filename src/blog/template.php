@@ -127,7 +127,7 @@ if ($onBlog == '1') {
 	
 	if ($onBlog == '1') { ?>
 			<div class="col-12 mt-2"><small>By: <?php echo $arrOutput['by'];?> | <?php $date = date_create($arrOutput['date']);
-			echo date_format($date,"F dS, Y");
+			echo date_format($date,"F jS, Y");
 			
 			?></small></div>
 			<div class="col-12"><hr class="m-0  mt-2"></div>
