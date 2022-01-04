@@ -2,10 +2,10 @@ RudeCMS is a super-simple content management system (CMS). I wanted a simple, fl
 
 Completely flat-file, no databases to corrupt or slow you down. Let me know if you use it and I'll link to your site!
 
-**Current Release:**
+## Current Release:
 - [Click Here](https://github.com/RudeCMS/RudeCMS/releases/)
 
-**Features:**
+## Features:
 - No database
 - No installation beyond copying the files
 - Easy customisation
@@ -15,13 +15,13 @@ Completely flat-file, no databases to corrupt or slow you down. Let me know if y
 - Twitter and Open Graph meta tags
 - Automatic site map generation
 - Automatic jpeg to webp
-- 
   
 **Future Updates**
 - A better admin interface
 - A more secure admin area (use htaccess / htpasswd for now)
 - Anything else I think is cool
 
+## Installation and Customization
 **Installation**
 - Unzip the release into a folder onto your server and you're good to go. 
 - Rename the "Admin" folder and add some .htaccess / .htpasswd security on the folder because there's no security built into it yet.
@@ -31,6 +31,6 @@ Completely flat-file, no databases to corrupt or slow you down. Let me know if y
 - Swap out the logo file
 - Swap out the favicon.ico
 
-**Sites Using RudeCMS**
+## Sites Using RudeCMS
 Let me know if you use it and I'll link to your site!
 - [RudeBirdies.com](https://rudebirdies.com)
