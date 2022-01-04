@@ -17,6 +17,12 @@ if(!function_exists("cleanit")) {
 	  return $data;
 	}
 }
+
+if(!function_exists("processString")) {			
+			function processString($s) {
+				return preg_replace('/https?:\/\/[\w\-\.!~#?&=+\*\'"(),\/]+/','<a href="$0" target="_blank">$0</a>',$s);
+			}
+}
 	
 	$url = $_SERVER['REQUEST_URI'];
 
