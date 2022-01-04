@@ -30,3 +30,7 @@ Completely flat-file, no databases to corrupt or slow you down. Let me know if y
 - Update the settings.php file with your site details, social links, preferred colours etc.
 - Swap out the logo file
 - Swap out the favicon.ico
+
+**Sites Using RudeCMS**
+Let me know if you use it and I'll link to your site!
+- [RudeBirdies.com](https://rudebirdies.com)
