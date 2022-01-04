@@ -13,12 +13,13 @@ Completely flat-file, no databases to corrupt or slow you down. Let me know if y
 - Post Navigation (Previous/Next)
 - Slug links for blog posts
 - Twitter and Open Graph meta tags
-- Automatic site map generation  
+- Automatic site map generation
+- Automatic jpeg to webp
+- 
   
 **Future Updates**
 - A better admin interface
-- A more secure admin area (log in etc)
-- Automatic resizing/converting jpegs to webp (ready, will deploy in v0.1.2)
+- A more secure admin area (use htaccess / htpasswd for now)
 - Anything else I think is cool
 
 **Installation**
