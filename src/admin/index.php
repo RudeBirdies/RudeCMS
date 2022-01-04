@@ -58,6 +58,12 @@ Create a new Post
 <li><a href="createnew.php">Create new</a>
 </ul>
 
+Update all from Template<br/>
+<p class="m-0 w-50"><small>This will update the index.php file in all blog folders to match the template. Useful to run this if the template has changed and you don't want to update all of them manually.</small></p>
+<ul>
+<li><a href="updatefromtemplate.php">Update Index Files</a>
+</ul>
+
 
 Existing Posts - Click to Edit
 <ul>
