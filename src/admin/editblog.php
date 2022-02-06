@@ -50,7 +50,9 @@ if (empty($slug)) {
 }
 
 if (empty($body)) {
-	$body = 'Empty';
+	/* Replacing "Empty" with an empty string to allow for blogs without content other than pictures.*/
+	/* $body = 'Empty'; */
+	$body = '';
 }
 
 if (empty($metadesc)) {
