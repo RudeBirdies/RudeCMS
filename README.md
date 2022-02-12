@@ -9,7 +9,7 @@ Completely flat-file, no databases to corrupt or slow you down. Let me know if y
 - No database
 - No installation beyond copying the files
 - Easy customisation
-- Infinite Scrolling
+- Infinite Scrolling or Paginated (Back/Next)
 - Post Navigation (Previous/Next)
 - Slug links for blog posts
 - Twitter and Open Graph meta tags
