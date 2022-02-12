@@ -31,8 +31,12 @@ $linkVisitedColor = '#C60040';
 $linkHoverColor = '#8E0033';
 $linkActiveColor = '#8E0033';
 
-$initialOnScreen = 2; // How many posts to see before starting infinite scroll
-$resultsPerScroll = 1; // When infinite scrolling, how many posts to load each time.
+$initialOnScreen = 2;	// How many posts to see before starting infinite scroll
+$resultsPerScroll = 1;	// When infinite scrolling, how many posts to load each time.
+						        // Note: $resultsPerScroll is ignored when $usePagination = 1
+
+$usePagination = 1;	// 1 = Yes, 0 = No
+					// Note: Uses $initialOnScreen value for page length. Ignores $resultsPerScroll
 
 $twitter = '@twitter';
 $instagram = 'instagramname';
