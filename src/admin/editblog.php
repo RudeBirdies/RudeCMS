@@ -64,25 +64,49 @@ if (empty($metadesc)) {
 	
 	if (!empty(basename($_FILES["FileName"]["name"]))) {
 
-	//	print_r($_FILES);
-		
-		$target_dir = '../blog/'.$dirName;
-		$target_file = $target_dir .'/'. $dirName . '.jpg';
+		$target_dir = '../blog/'.$slug;
+		$target_file = $target_dir .'/'. $slug . '.jpg';
 
 		move_uploaded_file($_FILES["FileName"]["tmp_name"], $target_file);
-
-
+	
+	
 		$file=$target_file;
-		$image=  imagecreatefromjpeg($file);
+		//$image=  imagecreatefromjpeg($file);
+
+		//Mod to handle PNG file uploads.
+		
+		// Get the uploaded file extension
+		$file_ext = strtolower(pathinfo($_FILES["FileName"]["name"], PATHINFO_EXTENSION));
+
+		// Check if the file is a JPEG or PNG
+		if ($file_ext === 'jpg' || $file_ext === 'jpeg') {
+			$image = imagecreatefromjpeg($file);
+		} elseif ($file_ext === 'png') {
+			$image = imagecreatefrompng($file);
+		} else {
+			// File is not a supported image type
+			exit("Error: File must be a JPEG or PNG image");
+		}
+			
+		$width = 500;
+		$height = 500;
+		$resized_image = imagescale($image, $width, $height);
+
+		
 		ob_start();
-		imagejpeg($image,NULL,100);
+		imagejpeg($resized_image,NULL,100);
 		$cont=  ob_get_contents();
 		ob_end_clean();
+		
 		imagedestroy($image);
 		$content =  imagecreatefromstring($cont);
-		imagewebp($content,$target_dir .'/'. $dirName . '.webp', 80);
+		imagewebp($content,$target_dir .'/'. $slug . '.webp', 95);
+		
+		//Mod to handle PNG file uploads, convert them to jpg
+		imagejpeg($content,$target_dir .'/'. $slug . '.jpg', 95);
+		
 		imagedestroy($content);
-
+		imagedestroy($resized_image);
 	}
 	
 if ($slug !== $dirName) {
@@ -168,8 +192,8 @@ if (isset($_GET['success'])) {
 	$filename = "../blog/".$dirName."/".$dirName.".xml";
 
 	if (!file_exists($filename)) {
-		header('Location: '.$website.'/'.$adminarea.'/');
-		exit;
+		//header('Location: '.$website.'/'.$adminarea.'/');
+		//exit;
 	}
 
 
